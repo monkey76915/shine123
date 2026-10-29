@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>北九州繪本風旅行日程 🎏</title>
+  
+  <!-- Google Fonts: Huninn (粉圓) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#FFFCF6',
+            ink: '#3E3A39',
+            coral: '#F2A497',
+            yamabuki: '#F6D27A',
+            mizuiro: '#A8D3E6',
+            wakatake: '#B9DAA5',
+            softbg: '#F9F5EC'
+          },
+          fontFamily: {
+            huninn: ['"Zen Maru Gothic"', 'sans-serif'],
+          },
+          borderWidth: {
+            '3': '3px',
+          },
+          boxShadow: {
+            'cute': '4px 4px 0px #3E3A39',
+            'cute-sm': '2px 2px 0px #3E3A39',
+            'cute-lg': '6px 6px 0px #3E3A39',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #FFFCF6;
+      color: #3E3A39;
+      font-family: 'Zen Maru Gothic', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Cute Japanese Style Borders & Shapes */
+    .border-handdrawn {
+      border: 3px solid #3E3A39;
+    }
+
+    /* Floating & gentle animations */
+    @keyframes gentle-float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(1.5deg); }
+    }
+
+    @keyframes gentle-wiggle {
+      0%, 100% { transform: rotate(-2deg); }
+      50% { transform: rotate(2deg); }
+    }
+
+    @keyframes bounce-tab {
+      0% { transform: scale(0.92); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .animate-float {
+      animation: gentle-float 4s ease-in-out infinite;
+    }
+
+    .animate-wiggle {
+      animation: gentle-wiggle 3s ease-in-out infinite;
+    }
+
+    .tab-bounce {
+      animation: bounce-tab 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* Accessibility: Respect Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      .animate-float, .animate-wiggle, .tab-bounce {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* Custom Checkbox */
+    .custom-checkbox {
+      width: 24px;
+      height: 24px;
+      border: 3px solid #3E3A39;
+      border-radius: 8px;
+      appearance: none;
+      outline: none;
+      cursor: pointer;
+      background-color: #FFFFFF;
+      transition: all 0.15s ease;
+      position: relative;
+    }
+    .custom-checkbox:checked {
+      background-color: #B9DAA5;
+    }
+    .custom-checkbox:checked::after {
+      content: "✓";
+      position: absolute;
+      color: #3E3A39;
+      font-weight: 900;
+      font-size: 16px;
+      top: -2px;
+      left: 3px;
+    }
+  </style>
+</head>
+<body class="min-h-screen pb-16 text-ink selection:bg-yamabuki selection:text-ink">
+
+  <!-- 頂端固定選單 -->
+  <header class="sticky top-0 z-50 bg-paper/95 backdrop-blur-md border-b-3 border-ink px-4 py-3">
+    <div class="max-w-xl mx-auto flex justify-between items-center">
+      <a href="#home" class="flex items-center gap-2 font-black text-lg tracking-wider">
+        <!-- SVG Mini Onsen Icon -->
+        <svg class="w-7 h-7 text-coral" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+          <path d="M16 44 C 16 52, 48 52, 48 44 C 48 38, 16 38, 16 44 Z" fill="#F2A497"/>
+          <path d="M22 28 C 20 22, 26 18, 24 12" />
+          <path d="M32 28 C 30 22, 36 18, 34 12" />
+          <path d="M42 28 C 40 22, 46 18, 44 12" />
+        </svg>
+        <span>北九州旅情 🎏</span>
+      </a>
+      <nav class="flex gap-2 text-sm font-bold">
+        <a href="#flight" class="px-2.5 py-1 bg-yamabuki border-3 border-ink rounded-full shadow-cute-sm hover:translate-y-0.5 transition-transform">航班</a>
+        <a href="#itinerary" class="px-2.5 py-1 bg-mizuiro border-3 border-ink rounded-full shadow-cute-sm hover:translate-y-0.5 transition-transform">行程</a>
+        <a href="#stay" class="px-2.5 py-1 bg-wakatake border-3 border-ink rounded-full shadow-cute-sm hover:translate-y-0.5 transition-transform">住宿</a>
+        <a href="#todo" class="px-2.5 py-1 bg-coral border-3 border-ink rounded-full shadow-cute-sm hover:translate-y-0.5 transition-transform">清單</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-xl mx-auto px-4 pt-6 space-y-8">
+
+    <!-- 首頁插圖＋標題＋出發倒數 -->
+    <section id="home" class="bg-softbg border-3 border-ink rounded-3xl p-6 shadow-cute relative overflow-hidden">
+      <!-- Decor SVG Leaves -->
+      <div class="absolute -top-3 -right-3 w-16 h-16 opacity-30 pointer-events-none">
+        <svg viewBox="0 0 100 100" fill="#B9DAA5">
+          <circle cx="50" cy="50" r="40"/>
+        </svg>
+      </div>
+
+      <div class="text-center space-y-4">
+        <!-- Banner Illustration SVG -->
+        <div class="relative w-48 h-48 mx-auto animate-float">
+          <svg class="w-full h-full" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Mount Sarakura / Mt Fuji style mountain -->
+            <path d="M 30 150 L 100 50 L 170 150 Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M 80 78 L 100 50 L 120 78 Q 100 88 80 78 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+            <!-- Sun -->
+            <circle cx="155" cy="45" r="22" fill="#F2A497" stroke="#3E3A39" stroke-width="4"/>
+            <!-- Little Retro Train -->
+            <rect x="45" y="140" width="110" height="35" rx="10" fill="#F6D27A" stroke="#3E3A39" stroke-width="4"/>
+            <rect x="55" y="148" width="22" height="15" rx="4" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+            <rect x="88" y="148" width="22" height="15" rx="4" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+            <rect x="121" y="148" width="22" height="15" rx="4" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+            <!-- Wheels -->
+            <circle cx="65" cy="178" r="8" fill="#3E3A39"/>
+            <circle cx="135" cy="178" r="8" fill="#3E3A39"/>
+            <!-- Cute Cherry Blossom cloud -->
+            <path d="M 20 110 Q 30 95 45 105 Q 60 90 75 105 Q 85 120 70 125 Q 30 130 20 110 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+          </svg>
+        </div>
+
+        <div>
+          <span class="inline-block bg-yamabuki border-3 border-ink px-3 py-0.5 rounded-full text-xs font-bold mb-2 shadow-cute-sm">
+            🍁 秋末漫遊 2026
+          </span>
+          <h1 class="text-3xl font-black text-ink tracking-wide">北九州雙人行</h1>
+          <p class="text-sm font-medium text-gray-600 mt-1">門司港 ‧ 小倉 ‧ 唐戶市場 ‧ 皿倉山夜景</p>
+        </div>
+
+        <!-- Countdown Card -->
+        <div class="bg-paper border-3 border-ink rounded-2xl p-4 shadow-cute-sm">
+          <div class="text-xs font-bold text-gray-500 mb-1">距離出發時間 ( 2026/11/26 03:00 ) 還有</div>
+          <div id="countdown" class="grid grid-cols-4 gap-2 text-center">
+            <div class="bg-mizuiro/40 border-2 border-ink rounded-xl p-1.5">
+              <span id="cd-days" class="block text-2xl font-black">00</span>
+              <span class="text-[10px] font-bold">天</span>
+            </div>
+            <div class="bg-yamabuki/40 border-2 border-ink rounded-xl p-1.5">
+              <span id="cd-hours" class="block text-2xl font-black">00</span>
+              <span class="text-[10px] font-bold">時</span>
+            </div>
+            <div class="bg-wakatake/40 border-2 border-ink rounded-xl p-1.5">
+              <span id="cd-mins" class="block text-2xl font-black">00</span>
+              <span class="text-[10px] font-bold">分</span>
+            </div>
+            <div class="bg-coral/40 border-2 border-ink rounded-xl p-1.5">
+              <span id="cd-secs" class="block text-2xl font-black">00</span>
+              <span class="text-[10px] font-bold">秒</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 航班卡片 Section -->
+    <section id="flight" class="space-y-3">
+      <div class="flex items-center gap-2">
+        <!-- SVG Airplane Icon -->
+        <div class="w-8 h-8 bg-coral rounded-xl border-3 border-ink flex items-center justify-center shadow-cute-sm">
+          <svg class="w-5 h-5 text-paper" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-1.2 2.3c-.2.4-.1.9.2 1.1L8 14.5l-3 3-2.3-.8c-.4-.1-.8.1-.9.5l-.4 1.1c-.1.4.1.8.5.9l4.3 1.8 1.8 4.3c.1.4.5.6.9.5l1.1-.4c.4-.1.6-.5.5-.9l-.8-2.3 3-3 4.4 5.3c.2.3.7.4 1.1.2l2.3-1.2c.4-.2.6-.6.5-1.1z"/>
+          </svg>
+        </div>
+        <h2 class="text-xl font-black">航班資訊</h2>
+        <span class="text-xs bg-paper border-2 border-ink rounded-md px-2 py-0.5 font-bold">STAR COMET</span>
+      </div>
+
+      <div class="bg-paper border-3 border-ink rounded-2xl p-5 shadow-cute space-y-4 relative overflow-hidden">
+        <!-- Flight 1: Go -->
+        <div class="border-b-2 border-dashed border-ink/30 pb-4">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-xs font-black bg-mizuiro border-2 border-ink px-2 py-0.5 rounded-md">去程 11/26 (四)</span>
+            <span class="text-xs font-bold text-gray-500">託運行李 30kg</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="text-left">
+              <div class="text-2xl font-black">03:00</div>
+              <div class="text-xs font-bold text-gray-600">TPE 台北(桃園)</div>
+            </div>
+            <div class="flex flex-col items-center px-2">
+              <span class="text-[10px] font-bold text-gray-400">直飛 2h 15m</span>
+              <div class="w-20 h-0.5 bg-ink relative my-1">
+                <div class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-yamabuki border-2 border-ink rounded-full"></div>
+              </div>
+              <span class="text-[10px] font-bold text-coral">STAR COMET</span>
+            </div>
+            <div class="text-right">
+              <div class="text-2xl font-black">06:15</div>
+              <div class="text-xs font-bold text-gray-600">KKJ 北九州</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flight 2: Return -->
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-xs font-black bg-coral border-2 border-ink px-2 py-0.5 rounded-md">回程 11/29 (日)</span>
+            <span class="text-xs font-bold text-gray-500">託運行李 30kg</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="text-left">
+              <div class="text-2xl font-black">23:50</div>
+              <div class="text-xs font-bold text-gray-600">KKJ 北九州</div>
+            </div>
+            <div class="flex flex-col items-center px-2">
+              <span class="text-[10px] font-bold text-gray-400">直飛 1h 40m</span>
+              <div class="w-20 h-0.5 bg-ink relative my-1">
+                <div class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-wakatake border-2 border-ink rounded-full"></div>
+              </div>
+              <span class="text-[10px] font-bold text-coral">STAR COMET</span>
+            </div>
+            <div class="text-right">
+              <div class="text-2xl font-black">01:30 <span class="text-[10px] text-coral font-bold">+1天</span></div>
+              <div class="text-xs font-bold text-gray-600">TPE 台北(桃園)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Total Price -->
+        <div class="bg-softbg border-2 border-ink rounded-xl p-3 flex justify-between items-center text-xs">
+          <span class="font-bold">機票總計 (包含稅金與附加費)</span>
+          <span class="text-base font-black text-coral">NT$ 7,285 / 人</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 每日行程 Section -->
+    <section id="itinerary" class="space-y-4">
+      <div class="flex justify-between items-end">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-yamabuki rounded-xl border-3 border-ink flex items-center justify-center shadow-cute-sm">
+            <svg class="w-5 h-5 text-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <rect x="3" y="4" width="18" height="18" rx="3" ry="3"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </div>
+          <h2 class="text-xl font-black">每日行程</h2>
+        </div>
+        
+        <!-- Add Itinerary Button -->
+        <button onclick="addNewItineraryItem()" class="text-xs bg-wakatake border-2 border-ink rounded-full px-3 py-1 font-black shadow-cute-sm hover:scale-105 active:scale-95 transition-transform flex items-center gap-1">
+          <span>＋ 新增行程</span>
+        </button>
+      </div>
+
+      <!-- 日期切換 Tab -->
+      <div class="grid grid-cols-4 gap-2" id="date-tabs">
+        <button onclick="switchDay(0)" id="tab-0" class="date-tab bg-yamabuki border-3 border-ink rounded-2xl py-2 px-1 text-center shadow-cute transition-all">
+          <div class="text-[10px] font-bold">11/26 (四)</div>
+          <div class="text-sm font-black">Day 1</div>
+        </button>
+        <button onclick="switchDay(1)" id="tab-1" class="date-tab bg-paper border-3 border-ink rounded-2xl py-2 px-1 text-center shadow-cute-sm opacity-70 hover:opacity-100 transition-all">
+          <div class="text-[10px] font-bold">11/27 (五)</div>
+          <div class="text-sm font-black">Day 2</div>
+        </button>
+        <button onclick="switchDay(2)" id="tab-2" class="date-tab bg-paper border-3 border-ink rounded-2xl py-2 px-1 text-center shadow-cute-sm opacity-70 hover:opacity-100 transition-all">
+          <div class="text-[10px] font-bold">11/28 (六)</div>
+          <div class="text-sm font-black">Day 3</div>
+        </button>
+        <button onclick="switchDay(3)" id="tab-3" class="date-tab bg-paper border-3 border-ink rounded-2xl py-2 px-1 text-center shadow-cute-sm opacity-70 hover:opacity-100 transition-all">
+          <div class="text-[10px] font-bold">11/29 (日)</div>
+          <div class="text-sm font-black">Day 4</div>
+        </button>
+      </div>
+
+      <!-- Day Dynamic Container -->
+      <div id="day-content" class="bg-paper border-3 border-ink rounded-3xl p-5 shadow-cute space-y-6 min-h-[380px]">
+        <!-- Timeline items rendered dynamically by JS -->
+      </div>
+    </section>
+
+    <!-- 住宿資訊 Section -->
+    <section id="stay" class="space-y-3">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-wakatake rounded-xl border-3 border-ink flex items-center justify-center shadow-cute-sm">
+          <svg class="w-5 h-5 text-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M3 10v11h18V10"/>
+            <path d="M3 10l9-7 9 7"/>
+            <rect x="9" y="14" width="6" height="7"/>
+          </svg>
+        </div>
+        <h2 class="text-xl font-black">住宿資訊 (Airbnb)</h2>
+      </div>
+
+      <div class="bg-paper border-3 border-ink rounded-2xl p-5 shadow-cute space-y-4">
+        <div class="flex items-start justify-between gap-2">
+          <div>
+            <span class="bg-wakatake border-2 border-ink px-2 py-0.5 rounded-md text-xs font-bold">連住 3 晚</span>
+            <h3 class="text-lg font-black mt-1">小倉私人溫馨民宿</h3>
+            <p class="text-xs text-gray-600 mt-0.5">近 JR 八幡站 / 小倉站周邊</p>
+          </div>
+          <!-- House SVG Icon -->
+          <div class="w-12 h-12 shrink-0 animate-wiggle">
+            <svg viewBox="0 0 100 100" class="w-full h-full">
+              <path d="M10 50 L50 15 L90 50 L80 50 L80 85 L20 85 L20 50 Z" fill="#F6D27A" stroke="#3E3A39" stroke-width="6"/>
+              <rect x="40" y="55" width="20" height="30" fill="#F2A497" stroke="#3E3A39" stroke-width="4"/>
+              <circle cx="45" cy="70" r="3" fill="#3E3A39"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="bg-softbg border-2 border-ink rounded-xl p-3.5 space-y-2">
+          <div class="text-xs font-black flex items-center gap-1.5 text-coral">
+            <span>📍 入住到達指引標記</span>
+          </div>
+          <p class="text-xs leading-relaxed text-gray-700 font-medium">
+            以學校前面的 <span class="bg-yamabuki px-1 rounded font-bold">DyDo 自動販賣機</span> 為地標，從那裡穿過停車場，往裡面走去<span class="font-bold underline decoration-coral decoration-2">第 1 間</span>即抵達！
+          </p>
+        </div>
+
+        <!-- Airbnb Photo Sample -->
+        <div class="border-2 border-ink rounded-xl overflow-hidden relative">
+          <div class="bg-mizuiro/30 p-3 text-center border-b-2 border-ink">
+            <span class="text-xs font-bold">🏠 民宿外觀與入口識別照片</span>
+          </div>
+          <div class="p-3 bg-white flex flex-col items-center justify-center min-h-[140px] text-center">
+            <svg class="w-16 h-16 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            </svg>
+            <p class="text-xs font-bold text-gray-600">認明白牆雙層建築與紅圈指引入口</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 可打勾待辦清單 Section -->
+    <section id="todo" class="space-y-3">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-coral rounded-xl border-3 border-ink flex items-center justify-center shadow-cute-sm">
+            <svg class="w-5 h-5 text-paper" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M9 11l3 3L22 4"/>
+              <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+            </svg>
+          </div>
+          <h2 class="text-xl font-black">準備清單 & 備忘</h2>
+        </div>
+        <span id="todo-progress-text" class="text-xs font-bold bg-softbg border-2 border-ink px-2.5 py-1 rounded-full">0/0 完成</span>
+      </div>
+
+      <div class="bg-paper border-3 border-ink rounded-2xl p-5 shadow-cute space-y-4">
+        <!-- Progress Bar -->
+        <div class="w-full bg-softbg border-2 border-ink h-4 rounded-full overflow-hidden p-0.5">
+          <div id="todo-progress-bar" class="bg-wakatake h-full rounded-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+
+        <!-- Todo List Container -->
+        <div id="todo-list" class="space-y-2.5">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <!-- Add Todo Input -->
+        <div class="flex gap-2 pt-2 border-t-2 border-dashed border-ink/20">
+          <input type="text" id="new-todo-input" placeholder="新增待辦或準備物品..." class="flex-1 bg-softbg border-2 border-ink rounded-xl px-3 py-1.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-mizuiro">
+          <button onclick="addTodoItem()" class="bg-yamabuki border-2 border-ink rounded-xl px-4 py-1.5 text-xs font-black shadow-cute-sm hover:scale-105 active:scale-95 transition-transform">
+            新增
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-12 text-center text-xs text-gray-500 font-bold space-y-1">
+    <p>🇯🇵 祝你有個愉快的北九州之旅！</p>
+    <p class="text-[10px] text-gray-400">日系手繪風旅遊行程頁面 ‧ 可隨時編輯與調整</p>
+  </footer>
+
+  <!-- Edit Modal for Itinerary & Map Links -->
+  <div id="edit-modal" class="fixed inset-0 bg-ink/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-paper border-3 border-ink rounded-3xl p-5 max-w-md w-full shadow-cute-lg space-y-4">
+      <div class="flex justify-between items-center border-b-2 border-ink/20 pb-2">
+        <h3 class="font-black text-lg" id="modal-title">編輯行程項目</h3>
+        <button onclick="closeModal()" class="w-7 h-7 bg-coral text-paper font-black border-2 border-ink rounded-full flex items-center justify-center shadow-cute-sm">✕</button>
+      </div>
+
+      <div class="space-y-3 text-xs font-bold">
+        <div>
+          <label class="block text-gray-600 mb-1">時間</label>
+          <input type="text" id="edit-time" class="w-full bg-softbg border-2 border-ink rounded-xl p-2 focus:outline-none">
+        </div>
+
+        <div>
+          <label class="block text-gray-600 mb-1">行程名稱</label>
+          <input type="text" id="edit-title" class="w-full bg-softbg border-2 border-ink rounded-xl p-2 focus:outline-none">
+        </div>
+
+        <div>
+          <label class="block text-gray-600 mb-1">交通標籤 / 分類</label>
+          <select id="edit-tag" class="w-full bg-softbg border-2 border-ink rounded-xl p-2 focus:outline-none">
+            <option value="接駁巴士">接駁巴士</option>
+            <option value="JR 電車">JR 電車</option>
+            <option value="纜車">纜車</option>
+            <option value="關門汽船">關門汽船</option>
+            <option value="潮風號">潮風號</option>
+            <option value="山電巴士">山電巴士</option>
+            <option value="美食">美食</option>
+            <option value="景點">景點</option>
+            <option value="購物">購物</option>
+            <option value="住宿">住宿</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-gray-600 mb-1">Google 地圖搜尋/連結關鍵字</label>
+          <input type="text" id="edit-map" class="w-full bg-softbg border-2 border-ink rounded-xl p-2 focus:outline-none" placeholder="例如: 大竜軒拉麵本店">
+        </div>
+
+        <div>
+          <label class="block text-gray-600 mb-1">詳細備忘 / 說明</label>
+          <textarea id="edit-notes" rows="3" class="w-full bg-softbg border-2 border-ink rounded-xl p-2 focus:outline-none"></textarea>
+        </div>
+
+        <div class="flex items-center gap-2 pt-1">
+          <input type="checkbox" id="edit-mustvisit" class="custom-checkbox">
+          <label for="edit-mustvisit" class="cursor-pointer text-coral font-black">標記為「必去」景點 ⭐</label>
+        </div>
+      </div>
+
+      <div class="flex gap-2 pt-2">
+        <button onclick="deleteItineraryItem()" class="bg-coral text-paper border-2 border-ink rounded-xl px-4 py-2 font-black shadow-cute-sm hover:scale-105 active:scale-95 transition-transform">刪除</button>
+        <button onclick="saveModalChanges()" class="flex-1 bg-wakatake border-2 border-ink rounded-xl py-2 font-black shadow-cute-sm hover:scale-105 active:scale-95 transition-transform">儲存修改</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // Initial Travel Itinerary Data
+    let itineraryData = [
+      // Day 1: 11/26 (四)
+      [
+        { id: '1-1', time: '06:15', title: '抵達北九州機場', tag: '接駁巴士', mustVisit: false, map: '北九州機場', notes: '1樓入境大廳外 1號乘車處搭接駁巴士 → JR小倉站 (¥710)' },
+        { id: '1-2', time: '08:30', title: 'Airbnb 民宿辦理入放行李', tag: '住宿', mustVisit: false, map: '小倉站', notes: '依 DyDo 自動販賣機指標前往穿過停車場第1間' },
+        { id: '1-3', time: '11:30', title: '大竜軒拉麵 本店', tag: '美食', mustVisit: true, map: '大竜軒拉麵本店', notes: '道地濃郁九州豚骨拉麵美食' },
+        { id: '1-4', time: '14:00', title: 'Fruit Factory Mooon', tag: '美食', mustVisit: false, map: 'Fruit Factory Mooon', notes: '享用新鮮精緻的水果聖代與甜點' },
+        { id: '1-5', time: '17:00', title: '皿倉山纜車 山麓站', tag: '纜車', mustVisit: true, map: '皿倉山纜車 山麓站', notes: '搭乘JR至八幡站，換乘免費接駁車直達纜車站，欣賞新日本三大夜景' },
+        { id: '1-6', time: '20:00', title: '3COINS 逛街', tag: '購物', mustVisit: false, map: '3COINS 小倉', notes: '營業至 20:00，平價生活雜貨必逛' },
+        { id: '1-7', time: '20:30', title: '博多牛腸鍋 大山 (AMUPLAZA 小倉店)', tag: '美食', mustVisit: true, map: '博多牛腸鍋 大山 AMUPLAZA 小倉店', notes: '品嚐博多名物牛腸鍋做為美味宵夜' }
+      ],
+      // Day 2: 11/27 (五)
+      [
+        { id: '2-1', time: '09:30', title: 'Kona\'s Coffee @ Yahata', tag: '美食', mustVisit: true, map: 'Kona\'s Coffee Yahata', notes: '夏威夷風格度假感早午餐與鬆餅' },
+        { id: '2-2', time: '12:00', title: 'THE OUTLETS KITAKYUSHU & Aeon Mall', tag: '購物', mustVisit: true, map: 'THE OUTLETS KITAKYUSHU', notes: '大型 Outlet 與 Aeon Mall 快樂血拼逛街一整天' },
+        { id: '2-3', time: '18:30', title: '串カツと鶏皮串 うまいもん 小倉', tag: '美食', mustVisit: false, map: '串カツと鶏皮串 うまいもん 小倉', notes: '小倉必吃炸串與香酥雞皮串居酒屋' },
+        { id: '2-4', time: '21:00', title: '返回 Airbnb 休息', tag: '住宿', mustVisit: false, map: 'Airbnb', notes: '整理戰利品並充飽電' }
+      ],
+      // Day 3: 11/28 (六)
+      [
+        { id: '3-1', time: '09:00', title: '出門 & Bakery & Chandelier Eccentric', tag: '美食', mustVisit: false, map: 'Bakery & Chandelier Eccentric', notes: '購買獨特美味的烘焙麵包做為早餐' },
+        { id: '3-2', time: '10:00', title: '九州鐵道紀念館 & 購買關門海峽四葉草套票', tag: '景點', mustVisit: true, map: '九州鐵道紀念館', notes: '買套票(¥1,000)包含：潮風號 + 山電巴士 + 關門汽船' },
+        { id: '3-3', time: '11:00', title: '關門汽船 (門司港 ➔ 下關唐戶)', tag: '關門汽船', mustVisit: true, map: '門司港棧橋售票處', notes: '憑四葉草套票搭乘汽船橫越海峽' },
+        { id: '3-4', time: '11:30', title: '唐戶市場 (營業至 15:00)', tag: '美食', mustVisit: true, map: '唐戶市場', notes: '假日生魚片握壽司海鮮市集！必吃新鮮海鮮' },
+        { id: '3-5', time: '13:00', title: 'Kimura Shoten Café TIARA / 赤間神宮', tag: '景點', mustVisit: false, map: '赤間神宮', notes: '參觀水龍宮造型的赤間神宮與海岸咖啡' },
+        { id: '3-6', time: '14:30', title: '山電巴士 ➔ 關門隧道人行道', tag: '山電巴士', mustVisit: false, map: '關門隧道人行道', notes: '搭乘山電巴士至御裳川公園，體驗步行橫跨山口縣與福岡縣界' },
+        { id: '3-7', time: '15:30', title: '和布刈神社 (鉤河豚籤詩)', tag: '景點', mustVisit: true, map: '和布刈神社', notes: '神社特有！用小釣竿勾起可愛裝籤詩的河豚' },
+        { id: '3-8', time: '16:30', title: '潮風號觀光列車 (關門海峽和布刈站 ➔ 九州鐵道紀念館站)', tag: '潮風號', mustVisit: true, map: '關門海峽和布刈站', notes: '搭乘復古潮風號返回門司港復古區' },
+        { id: '3-9', time: '17:30', title: 'Princess Phi Phi 燒咖哩 OR 瓦片蕎麥麵 Takase', tag: '美食', mustVisit: true, map: '門司港燒咖哩', notes: '門司港懷舊區經典名物料理二選一' },
+        { id: '3-10', time: '19:00', title: '門司港懷舊展望室 (門司港夜景)', tag: '景點', mustVisit: false, map: '門司港懷舊展望室', notes: '登高俯瞰門司港夜景與關門大橋點燈' },
+        { id: '3-11', time: '21:00', title: '返回 Airbnb 打包行李', tag: '住宿', mustVisit: false, map: 'Airbnb', notes: '準備隔天寄放行李退房' }
+      ],
+      // Day 4: 11/29 (日)
+      [
+        { id: '4-1', time: '09:00', title: '行李寄放小倉站附近 7-11', tag: '景點', mustVisit: false, map: '小倉站', notes: '退房後將行李妥善寄放' },
+        { id: '4-2', time: '10:00', title: '旦過市場 & 星野園 (抹茶專賣)', tag: '美食', mustVisit: true, map: '旦過市場', notes: '體驗北九州廚房旦過市場，品嚐香濃抹茶' },
+        { id: '4-3', time: '11:30', title: '小倉城 & 八坂神社', tag: '景點', mustVisit: true, map: '小倉城', notes: '參訪勝山公園與天守閣小倉城' },
+        { id: '4-4', time: '13:00', title: '辻利茶舗 / 井筒屋百貨', tag: '購物', mustVisit: false, map: '井筒屋 小倉店', notes: '選購在地伴手禮與抹茶點心' },
+        { id: '4-5', time: '14:30', title: 'GU / UNIQLO / 無印良品 購物', tag: '購物', mustVisit: false, map: '小倉站前商場', notes: '最後補貨採買服飾與生活用品' },
+        { id: '4-6', time: '17:00', title: '牛カツ京都勝牛 & Shiroya 奶油小蛋糕', tag: '美食', mustVisit: true, map: '牛カツ京都勝牛 小倉', notes: '品嚐炸牛排與小倉懷舊排隊名店Shiroya奶油蛋糕' },
+        { id: '4-7', time: '19:00', title: '小倉站巴士中心 (8號乘車處) ➔ 北九州機場', tag: '接駁巴士', mustVisit: true, map: '小倉站巴士中心', notes: '⚠️ 建議搭乘 19:00 或 19:30 高速巴士，於 20:50 前抵達機場辦理登機' },
+        { id: '4-8', time: '23:50', title: '搭機返回台北 (桃園 TPE)', tag: '接駁巴士', mustVisit: false, map: '北九州機場', notes: '滿載美好的北九州回憶返家～' }
+      ]
+    ];
+
+    // Todo List Initial Data
+    let todoItems = [
+      { id: 't1', text: '護照 (有效期6個月以上)', done: true },
+      { id: 't2', text: '填寫 Visit Japan Web 入境申報', done: false },
+      { id: 't3', text: '日幣現金 & 日遊信用卡', done: true },
+      { id: 't4', text: '日本 eSIM / 網卡安裝設定', done: stroke = true },
+      { id: 't5', text: '準備 100 日元硬幣 (買四葉草套票/投幣機)', done: false },
+      { id: 't6', text: '隨身保暖外衣 / 摺疊傘', done: false }
+    ];
+
+    let currentDayIndex = 0;
+    let editingItemId = null;
+
+    // Badge styling mapping
+    const tagStyles = {
+      '接駁巴士': 'bg-mizuiro border-ink text-ink',
+      'JR 電車': 'bg-mizuiro border-ink text-ink',
+      '纜車': 'bg-yamabuki border-ink text-ink',
+      '關門汽船': 'bg-mizuiro border-ink text-ink',
+      '潮風號': 'bg-yamabuki border-ink text-ink',
+      '山電巴士': 'bg-mizuiro border-ink text-ink',
+      '美食': 'bg-coral border-ink text-ink',
+      '景點': 'bg-wakatake border-ink text-ink',
+      '購物': 'bg-yamabuki border-ink text-ink',
+      '住宿': 'bg-wakatake border-ink text-ink'
+    };
+
+    // Initialize Page
+    document.addEventListener('DOMContentLoaded', () => {
+      startCountdown();
+      renderDayContent(0);
+      renderTodoList();
+    });
+
+    // Flight Countdown Logic
+    function startCountdown() {
+      const targetDate = new Date('2026-11-26T03:00:00+08:00').getTime();
+
+      function update() {
+        const now = new Date().getTime();
+        const diff = targetDate - now;
+
+        if (diff <= 0) {
+          document.getElementById('countdown').innerHTML = `<div class="col-span-4 font-black text-coral text-lg">✈️ 已順利出發！祝旅途愉快！</div>`;
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+        document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+        document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+      }
+
+      update();
+      setInterval(update, 1000);
+    }
+
+    // Switch Day Itinerary
+    function switchDay(dayIdx) {
+      currentDayIndex = dayIdx;
+      
+      // Update Tab Styles
+      for (let i = 0; i < 4; i++) {
+        const tab = document.getElementById(`tab-${i}`);
+        if (i === dayIdx) {
+          tab.className = "date-tab bg-yamabuki border-3 border-ink rounded-2xl py-2 px-1 text-center shadow-cute tab-bounce scale-105 z-10";
+        } else {
+          tab.className = "date-tab bg-paper border-3 border-ink rounded-2xl py-2 px-1 text-center shadow-cute-sm opacity-70 hover:opacity-100 transition-all";
+        }
+      }
+
+      renderDayContent(dayIdx);
+    }
+
+    // Render Timeline Content for selected day
+    function renderDayContent(dayIdx) {
+      const container = document.getElementById('day-content');
+      const items = itineraryData[dayIdx];
+
+      if (!items || items.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-10 text-gray-500 font-bold">
+            <p class="text-3xl mb-2">🎈</p>
+            <p>這天還沒有安排行程喔！</p>
+          </div>`;
+        return;
+      }
+
+      let html = `<div class="relative border-l-3 border-ink ml-3 space-y-6 pl-5 py-1">`;
+
+      items.forEach((item) => {
+        const badgeClass = tagStyles[item.tag] || 'bg-paper border-ink text-ink';
+        const googleMapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.map || item.title)}`;
+
+        html += `
+          <div class="relative group">
+            <!-- Timeline Pin Dot -->
+            <div class="absolute -left-[27px] top-1.5 w-4 h-4 bg-paper border-3 border-ink rounded-full group-hover:bg-coral transition-colors"></div>
+
+            <div class="bg-softbg border-2 border-ink rounded-2xl p-3.5 shadow-cute-sm space-y-2 relative">
+              
+              <!-- Header Row -->
+              <div class="flex items-center justify-between flex-wrap gap-1">
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-black bg-paper border-2 border-ink px-2 py-0.5 rounded-lg shadow-cute-sm">${item.time}</span>
+                  <span class="text-[11px] font-bold border-2 ${badgeClass} px-2 py-0.5 rounded-full">${item.tag}</span>
+                  ${item.mustVisit ? `<span class="text-[11px] font-black bg-coral text-paper border-2 border-ink px-2 py-0.5 rounded-full animate-pulse">⭐ 必去</span>` : ''}
+                </div>
+
+                <!-- Action buttons -->
+                <div class="flex items-center gap-1">
+                  <button onclick="openEditModal('${item.id}')" class="text-xs text-gray-500 hover:text-ink font-bold px-1.5 py-0.5 rounded border border-transparent hover:border-ink">✏️ 編輯</button>
+                </div>
+              </div>
+
+              <!-- Main Title & Maps Link -->
+              <div class="flex items-start justify-between gap-2">
+                <h3 class="font-black text-base text-ink leading-snug">${item.title}</h3>
+                <a href="${googleMapUrl}" target="_blank" rel="noopener noreferrer" class="shrink-0 text-xs bg-mizuiro/50 hover:bg-mizuiro border-2 border-ink rounded-lg px-2 py-1 font-bold flex items-center gap-1 shadow-cute-sm transition-transform active:scale-95" title="在 Google 地圖開啟">
+                  📍 導航
+                </a>
+              </div>
+
+              <!-- Notes -->
+              ${item.notes ? `<p class="text-xs text-gray-700 font-medium leading-relaxed bg-paper/80 border border-ink/20 rounded-xl p-2">${item.notes}</p>` : ''}
+            </div>
+          </div>
+        `;
+      });
+
+      html += `</div>`;
+      container.innerHTML = html;
+    }
+
+    // Modal Control & Edit Logic
+    function openEditModal(itemId) {
+      editingItemId = itemId;
+      const item = itineraryData[currentDayIndex].find(x => x.id === itemId);
+      if (!item) return;
+
+      document.getElementById('modal-title').textContent = '編輯行程';
+      document.getElementById('edit-time').value = item.time;
+      document.getElementById('edit-title').value = item.title;
+      document.getElementById('edit-tag').value = item.tag;
+      document.getElementById('edit-map').value = item.map || item.title;
+      document.getElementById('edit-notes').value = item.notes || '';
+      document.getElementById('edit-mustvisit').checked = !!item.mustVisit;
+
+      document.getElementById('edit-modal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('edit-modal').classList.add('hidden');
+      editingItemId = null;
+    }
+
+    function saveModalChanges() {
+      if (!editingItemId) return;
+
+      const item = itineraryData[currentDayIndex].find(x => x.id === editingItemId);
+      if (item) {
+        item.time = document.getElementById('edit-time').value;
+        item.title = document.getElementById('edit-title').value;
+        item.tag = document.getElementById('edit-tag').value;
+        item.map = document.getElementById('edit-map').value;
+        item.notes = document.getElementById('edit-notes').value;
+        item.mustVisit = document.getElementById('edit-mustvisit').checked;
+      }
+
+      closeModal();
+      renderDayContent(currentDayIndex);
+    }
+
+    function deleteItineraryItem() {
+      if (!editingItemId) return;
+      
+      itineraryData[currentDayIndex] = itineraryData[currentDayIndex].filter(x => x.id !== editingItemId);
+      closeModal();
+      renderDayContent(currentDayIndex);
+    }
+
+    function addNewItineraryItem() {
+      const newId = 'custom-' + Date.now();
+      const newItem = {
+        id: newId,
+        time: '12:00',
+        title: '新行程地點',
+        tag: '景點',
+        mustVisit: false,
+        map: '小倉站',
+        notes: '點擊編輯按鈕可設定詳細說明與導航關鍵字'
+      };
+
+      itineraryData[currentDayIndex].push(newItem);
+      renderDayContent(currentDayIndex);
+      openEditModal(newId);
+    }
+
+    // Todo List Functions
+    function renderTodoList() {
+      const container = document.getElementById('todo-list');
+      const total = todoItems.length;
+      const completed = todoItems.filter(t => t.done).length;
+
+      // Update Header & Bar
+      document.getElementById('todo-progress-text').textContent = `${completed}/${total} 完成`;
+      const pct = total === 0 ? 0 : Math.round((completed / total) * 100);
+      document.getElementById('todo-progress-bar').style.width = `${pct}%`;
+
+      if (total === 0) {
+        container.innerHTML = `<div class="text-xs text-gray-400 font-bold text-center py-2">目前沒有準備事項</div>`;
+        return;
+      }
+
+      let html = '';
+      todoItems.forEach((t) => {
+        html += `
+          <div class="flex items-center justify-between bg-softbg border-2 border-ink rounded-xl px-3 py-2 text-xs font-bold shadow-cute-sm">
+            <label class="flex items-center gap-2 cursor-pointer flex-1 select-none">
+              <input type="checkbox" class="custom-checkbox" ${t.done ? 'checked' : ''} onchange="toggleTodo('${t.id}')">
+              <span class="${t.done ? 'line-through text-gray-400' : 'text-ink'}">${t.text}</span>
+            </label>
+            <button onclick="deleteTodo('${t.id}')" class="text-gray-400 hover:text-coral font-black ml-2 px-1">✕</button>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    function toggleTodo(id) {
+      const item = todoItems.find(x => x.id === id);
+      if (item) {
+        item.done = !item.done;
+        renderTodoList();
+      }
+    }
+
+    function addTodoItem() {
+      const input = document.getElementById('new-todo-input');
+      const text = input.value.trim();
+      if (!text) return;
+
+      todoItems.push({
+        id: 't-' + Date.now(),
+        text: text,
+        done: false
+      });
+
+      input.value = '';
+      renderTodoList();
+    }
+
+    function deleteTodo(id) {
+      todoItems = todoItems.filter(x => x.id !== id);
+      renderTodoList();
+    }
+  </script>
+</body>
+</html>
