@@ -267,7 +267,7 @@
 
       <!-- 日期切換 Tab -->
       <div class="grid grid-cols-4 gap-2 text-center">
-        <button id="tab-day1" onclick="switchDay(1)" class="day-tab border-3 border-[#3E3A39] rounded-2xl py-2 px-1 font-black text-xs sm:text-sm bg-[#F2A497] shadow-cute">
+        <button id="tab-day1" onclick="switchDay(1)" class="day-tab border-3 border-[#3E3A39] rounded-2xl py-2 px-1 font-black text-xs sm:text-sm bg-[#F2A497] text-white shadow-cute">
           11/26 (四)<br/><span class="font-normal text-xs">Day 1</span>
         </button>
         <button id="tab-day2" onclick="switchDay(2)" class="day-tab border-3 border-[#3E3A39] rounded-2xl py-2 px-1 font-black text-xs sm:text-sm bg-white shadow-cute-sm">
@@ -382,8 +382,7 @@
           <div class="border-2 border-[#3E3A39] rounded-xl overflow-hidden bg-[#FFFCF6] p-2 text-center">
             <span class="text-xs font-bold text-gray-500 block mb-1">Airbnb 實景地標圖</span>
             <div id="airbnb-img-container" class="w-full flex justify-center">
-              <!-- 可貼上圖片 -->
-              <img src="https://placehold.co/400x250/FFFCF6/3E3A39?text=Airbnb+DyDo%E8%B2%A9%E8%B3%A3%E6%A9%9F%E5%9C%B0%E標" alt="Airbnb指示" class="rounded-lg border-2 border-[#3E3A39] max-h-48 object-cover"/>
+              <img src="https://placehold.co/400x250/FFFCF6/3E3A39?text=Airbnb+DyDo%E8%B2%A9%E8%B3%A3%E6%A9%9F%E5%9C%B0%E6%A8%99" alt="Airbnb指示" class="rounded-lg border-2 border-[#3E3A39] max-h-48 object-cover"/>
             </div>
             <button onclick="changeCustomImg('airbnb')" class="mt-2 text-xs bg-[#A8D3E6] border border-[#3E3A39] px-2 py-1 rounded-md font-bold">🖼️ 修改圖片連結</button>
           </div>
@@ -479,7 +478,7 @@
         </div>
         <div>
           <label class="block mb-1">交通方式小標籤：</label>
-          <input id="edit-[#3E3A39]tag" type="text" class="w-full p-2 border-2 border-[#3E3A39] rounded-lg" placeholder="例：接駁巴士 / JR鐵道 / 關門汽船" />
+          <input id="edit-tag" type="text" class="w-full p-2 border-2 border-[#3E3A39] rounded-lg" placeholder="例：接駁巴士 / JR鐵道 / 關門汽船" />
         </div>
         <div>
           <label class="block mb-1">詳細備註說明：</label>
@@ -667,7 +666,7 @@
       document.getElementById('modal-title').innerText = `新增行程 (11/${25+currentDay})`;
       document.getElementById('edit-time').value = '';
       document.getElementById('edit-title').value = '';
-      document.getElementById('edit-[#3E3A39]tag').value = '';
+      document.getElementById('edit-tag').value = '';
       document.getElementById('edit-desc').value = '';
       document.getElementById('edit-map').value = 'https://maps.google.com';
       document.getElementById('edit-img').value = '';
@@ -685,7 +684,7 @@
       document.getElementById('modal-title').innerText = `編輯行程項目`;
       document.getElementById('edit-time').value = item.time || '';
       document.getElementById('edit-title').value = item.title || '';
-      document.getElementById('edit-[#3E3A39]tag').value = item.tag || '';
+      document.getElementById('edit-tag').value = item.tag || '';
       document.getElementById('edit-desc').value = item.desc || '';
       document.getElementById('edit-map').value = item.map || '';
       document.getElementById('edit-img').value = item.img || '';
@@ -703,7 +702,7 @@
     function saveItem() {
       const time = document.getElementById('edit-time').value.trim() || '彈性';
       const title = document.getElementById('edit-title').value.trim() || '新行程項目';
-      const tag = document.getElementById('edit-[#3E3A39]tag').value.trim();
+      const tag = document.getElementById('edit-tag').value.trim();
       const desc = document.getElementById('edit-desc').value.trim();
       const map = document.getElementById('edit-map').value.trim() || 'https://maps.google.com';
       const img = document.getElementById('edit-img').value.trim();
