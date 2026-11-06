@@ -1,129 +1,763 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>北九州四天三夜繪本風旅遊行程 🌸</title>
-    <!-- Google Fonts: Huninn (粉圓) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700;900&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        paper: '#FFFCF6',
-                        ink: '#3E3A39',
-                        coral: '#F2A497',
-                        yamabuki: '#F6D27A',
-                        mizuiro: '#A8D3E6',
-                        wakatake: '#B9DAA5',
-                    },
-                    fontFamily: {
-                        huninn: ['"Zen Maru Gothic"', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        'cute': '4px 4px 0px #3E3A39',
-                        'cute-sm': '2px 2px 0px #3E3A39',
-                        'cute-lg': '6px 6px 0px #3E3A39',
-                    }
-                }
-            }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>北九州四天三夜繪本風旅遊行程 🌸</title>
+
+  <!-- Google Fonts: Huninn (粉圓) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#FFFCF6',
+            ink: '#3E3A39',
+            coral: '#F2A497',
+            yamabuki: '#F6D27A',
+            mizuiro: '#A8D3E6',
+            wakatake: '#B9DAA5',
+          },
+          fontFamily: {
+            huninn: ['"Zen Maru Gothic"', 'sans-serif'],
+          },
+          boxShadow: {
+            'cute': '4px 4px 0px #3E3A39',
+            'cute-sm': '2px 2px 0px #3E3A39',
+            'cute-lg': '6px 6px 0px #3E3A39',
+          }
         }
-    </script>
-    <style>
-        body {
-            background-color: #FFFCF6;
-            color: #3E3A39;
-            font-family: 'Zen Maru Gothic', sans-serif;
-            overflow-x: hidden;
-        }
-        .bordered-box {
-            border: 3px solid #3E3A39;
-            border-radius: 1.25rem;
-            background-color: #ffffff;
-        }
-        .badge-label {
-            border: 2px solid #3E3A39;
-            border-radius: 9999px;
-            font-weight: 700;
-            padding: 0.15rem 0.6rem;
-            display: inline-block;
-            font-size: 0.85rem;
-        }
-        @keyframes gentleFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-6px) rotate(1deg); }
-        }
-        .animate-float {
-            animation: gentleFloat 3.5s ease-in-out infinite;
-        }
-        .pop-in {
-            animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        @keyframes popIn {
-            0% { opacity: 0; transform: scale(0.9) translateY(10px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .animate-float, .pop-in {
-                animation: none !important;
-                transition: none !important;
-            }
-        }
-        .reduced-motion .animate-float,
-        .reduced-motion .pop-in {
-            animation: none !important;
-            transition: none !important;
-        }
-        .custom-checkbox {
-            width: 1.4rem;
-            height: 1.4rem;
-            border: 2.5px solid #3E3A39;
-            border-radius: 0.4rem;
-            appearance: none;
-            cursor: pointer;
-            position: relative;
-            background-color: #fff;
-        }
-        .custom-checkbox:checked {
-            background-color: #B9DAA5;
-        }
-        .custom-checkbox:checked::after {
-            content: '✓';
-            position: absolute;
-            color: #3E3A39;
-            font-weight: 900;
-            font-size: 1rem;
-            top: -3px;
-            left: 2px;
-        }
-    </style>
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #FFFCF6;
+      color: #3E3A39;
+      font-family: 'Zen Maru Gothic', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* 手繪感覺與日系框線 */
+    .bordered-box {
+      border: 3px solid #3E3A39;
+      border-radius: 1.25rem;
+      background-color: #ffffff;
+    }
+
+    .badge-label {
+      border: 2px solid #3E3A39;
+      border-radius: 9999px;
+      font-weight: 700;
+      padding: 0.15rem 0.6rem;
+      display: inline-block;
+      font-size: 0.85rem;
+    }
+
+    /* 浮動微幅動畫 */
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(1deg); }
+    }
+
+    .animate-float {
+      animation: gentleFloat 3.5s ease-in-out infinite;
+    }
+
+    .pop-in {
+      animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.9) translateY(10px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* 支援「減少動態效果」設定 */
+    @media (prefers-reduced-motion: reduce) {
+      .animate-float, .pop-in {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    .reduced-motion .animate-float, 
+    .reduced-motion .pop-in {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    /* 自訂 Checkbox */
+    .custom-checkbox {
+      width: 1.4rem;
+      height: 1.4rem;
+      border: 2.5px solid #3E3A39;
+      border-radius: 0.4rem;
+      appearance: none;
+      cursor: pointer;
+      position: relative;
+      background-color: #fff;
+    }
+    .custom-checkbox:checked {
+      background-color: #B9DAA5;
+    }
+    .custom-checkbox:checked::after {
+      content: '✓';
+      position: absolute;
+      color: #3E3A39;
+      font-weight: 900;
+      font-size: 1rem;
+      top: -3px;
+      left: 2px;
+    }
+  </style>
 </head>
 <body class="pb-24">
-    <!-- 頂端固定選單 -->
-    <nav class="fixed top-0 left-0 right-0 z-40 bg-[#FFFCF6] border-b-4 border-[#3E3A39] px-4 py-2.5">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-2 cursor-pointer" onclick="scrollToSec('home')">
-                <svg width="32" height="32" viewBox="0 0 100 100" class="w-8 h-8">
-                    <circle cx="50" cy="50" r="45" fill="#F2A497" stroke="#3E3A39" stroke-width="6"/>
-                    <path d="M 25 35 L 75 35 M 30 25 L 70 25 M 35 35 L 35 75 M 65 35 L 65 75 M 25 48 L 75 48" stroke="#3E3A39" stroke-width="6" stroke-linecap="round"/>
-                </svg>
-                <span class="font-black text-lg md:text-xl text-[#3E3A39] tracking-wider">北九州之旅 ✈️</span>
-            </div>
-            <div class="hidden md:flex gap-3 text-sm font-bold">
-                <button onclick="scrollToSec('flights')" class="px-3 py-1 rounded-full border-2 border-[#3E3A39] bg-[#A8D3E6] hover:brightness-95 shadow-cute-sm">航班</button>
-                <button onclick="scrollToSec('itinerary')" class="px-3 py-1 rounded-full border-2 border-[#3E3A39] bg-[#F6D27A] hover:brightness-95 shadow-cute-sm">每日行程</button>
-                <button onclick="scrollToSec('timetable')" class="px-3 py-1 rounded-full border-2 border-[#3E3A39] bg-[#F2A497] text-white hover:brightness-95 shadow-cute-sm">時刻表</button>
-                <button onclick="scrollToSec('stay')" class="px-3 py-1 rounded-full border-2 border-[#3E3A39] bg-[#B9DAA5] hover:brightness-95 shadow-cute-sm">住宿/寄放</button>
-                <button onclick="scrollToSec('todo')" class="px-3 py-1 rounded-full border-2 border-[#3E3A39] bg-[#F2A497] hover:brightness-95 shadow-cute-sm">清單&退稅</button>
-            </div>
-            <div class="flex items-center gap-2">
-                <button id="motionToggle" onclick="toggleMotion()" class="text-xs bg-white border-2 border-[#3E3A39] px-2 py-1 rounded-lg font-bold shadow-cute-sm">
-                    ✨ 動態: 開
-                </button>
-            </div>
+
+  <!-- 頂端固定選單 -->
+  <nav class="fixed top-0 left-0 right-0 z-40 bg-[#FFFCF6] border-b-4 border-[#3E3A39] px-4 py-2.5">
+    <div class="max-w-4xl mx-auto flex justify-between items-center">
+      <div class="flex items-center gap-2 cursor-pointer" onclick="scrollToSec('home')">
+        <!-- SVG 日本鳥居圖示 -->
+        <svg width="32" height="32" viewBox="0 0 100 100" class="w-8 h-8">
+          <circle cx="50" cy="50" r="45" fill="#F2A497" stroke="#3E3A39" stroke-width="6"/>
+          <path d="M 25 35 L 75 35 M 30 25 L 70 25 M 35 35 L 35 75 M 65 35 L 65 75 M 25 48 L 75 48" stroke="#3E3A39" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+        <span class="font-black text-lg md:text-xl text-[#3E3A39] tracking-wider">北九州之旅 ✈️</span>
+      </div>
+
+      <!-- 選單連結 -->
+      <div class="hidden md:flex gap-3 text-sm font-bold">
+        <button onclick="scrollToSec('flights')" class="px-3 py-1 rounded-full border-2 border-[#3E3A39] bg-[#A8D3E6] hover:brightness-95 shadow-cute-sm">航班</button>
+        <button onclick="scrollToSec('itinerary')" class="px-3 py-1 rounded-full border-2 border-[#3E3A39] bg-[#F6D27A] hover:brightness-95 shadow-cute-sm">每日行程</button>
+        <button onclick="scrollToSec('timetable')" class="px-3 py-1 rounded-full border-2 border-[#3E3A39] bg-[#F2A497] text-white hover:brightness-95 shadow-cute-sm">時刻表</button>
+        <button onclick="scrollToSec('stay')" class="px-3 py-1 rounded-full border-2 border-[#3E3A39] bg-[#B9DAA5] hover:brightness-95 shadow-cute-sm">住宿/寄放</button>
+        <button onclick="scrollToSec('todo')" class="px-3 py-1 rounded-full border-2 border-[#3E3A39] bg-[#F2A497] hover:brightness-95 shadow-cute-sm">清單&退稅</button>
+      </div>
+
+      <!-- 開關選單與設定 -->
+      <div class="flex items-center gap-2">
+        <button id="motionToggle" onclick="toggleMotion()" class="text-xs bg-white border-2 border-[#3E3A39] px-2 py-1 rounded-lg font-bold shadow-cute-sm">
+          ✨ 動態: 開
+        </button>
+      </div>
+    </div>
+
+    <!-- 手機版底部導覽 -->
+    <div class="flex md:hidden justify-around mt-2 pt-2 border-t-2 border-[#3E3A39]/20 text-xs font-bold">
+      <button onclick="scrollToSec('flights')" class="px-2 py-1 bg-[#A8D3E6] border-2 border-[#3E3A39] rounded-lg">航班</button>
+      <button onclick="scrollToSec('itinerary')" class="px-2 py-1 bg-[#F6D27A] border-2 border-[#3E3A39] rounded-lg">行程</button>
+      <button onclick="scrollToSec('timetable')" class="px-2 py-1 bg-[#F2A497] text-white border-2 border-[#3E3A39] rounded-lg">時刻表</button>
+      <button onclick="scrollToSec('stay')" class="px-2 py-1 bg-[#B9DAA5] border-2 border-[#3E3A39] rounded-lg">住宿</button>
+      <button onclick="scrollToSec('todo')" class="px-2 py-1 bg-[#F2A497] border-2 border-[#3E3A39] rounded-lg">清單</button>
+    </div>
+  </nav>
+
+  <div class="pt-24 px-4 max-w-4xl mx-auto space-y-8">
+
+    <!-- 首頁 Hero 區域 -->
+    <section id="home" class="bordered-box p-6 bg-[#FFFCF6] shadow-cute text-center relative overflow-hidden">
+      <!-- 繪本插圖：關門大橋與河豚/皿倉山 -->
+      <div class="w-full max-w-md mx-auto my-2 animate-float">
+        <svg viewBox="0 0 400 200" class="w-full h-auto">
+          <!-- 雲朵 -->
+          <path d="M 50 60 Q 65 40 85 50 Q 105 40 120 60 Q 130 75 110 85 L 50 85 Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="4"/>
+          <path d="M 280 50 Q 295 35 315 45 Q 330 35 345 50 Q 355 65 335 75 L 280 75 Z" fill="#F6D27A" stroke="#3E3A39" stroke-width="4"/>
+          <!-- 皿倉山 -->
+          <polygon points="120,160 200,70 280,160" fill="#B9DAA5" stroke="#3E3A39" stroke-width="5" stroke-linejoin="round"/>
+          <polygon points="180,92.5 200,70 220,92.5" fill="#FFFCF6"/>
+          <!-- 關門大橋 -->
+          <path d="M 40 160 L 40 100 L 50 100 L 50 160 M 350 160 L 350 100 L 360 100 L 360 160" stroke="#3E3A39" stroke-width="5" fill="#F2A497"/>
+          <path d="M 20 130 Q 200 150 380 130" stroke="#3E3A39" stroke-width="5" fill="none"/>
+          <path d="M 45 105 L 200 142 M 355 105 L 200 142 M 45 105 L 120 136 M 355 105 L 280 136" stroke="#3E3A39" stroke-width="3" fill="none"/>
+          <!-- 海浪 -->
+          <path d="M 0 160 Q 30 150 60 160 T 120 160 T 180 160 T 240 160 T 300 160 T 360 160 T 400 160 L 400 200 L 0 200 Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="5"/>
+          <!-- 可愛河豚 -->
+          <g transform="translate(290, 130) scale(0.6)">
+            <circle cx="30" cy="30" r="25" fill="#F6D27A" stroke="#3E3A39" stroke-width="4"/>
+            <circle cx="20" cy="22" r="4" fill="#3E3A39"/>
+            <path d="M 12 35 Q 20 40 28 35" stroke="#3E3A39" stroke-width="3" fill="none"/>
+            <path d="M 52 25 L 62 18 L 58 32 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
+          </g>
+        </svg>
+      </div>
+
+      <h1 class="text-2xl md:text-4xl font-black text-[#3E3A39] mt-2 mb-1">
+        🇯🇵 北九州女子會漫遊 ✈️
+      </h1>
+      <p class="text-sm md:text-base font-bold text-gray-600 mb-4">
+        2026.11.26 (四) － 2026.11.29 (日) ｜ 四天三夜美好旅程
+      </p>
+
+      <!-- 倒數計時卡片 -->
+      <div class="inline-block bg-[#F6D27A] border-3 border-[#3E3A39] rounded-2xl px-6 py-3 shadow-cute">
+        <div class="text-xs font-black uppercase text-[#3E3A39]">距離出發還有</div>
+        <div id="countdown" class="text-2xl md:text-3xl font-black text-[#3E3A39] tracking-wider my-1">
+          計算中...
         </div>
+        <div class="text-xs font-bold text-[#3E3A39]">目標：2026/11/26 03:00 台北桃園起飛</div>
+      </div>
+    </section>
+
+    <!-- 航班資訊卡片 -->
+    <section id="flights" class="space-y-4">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">✈️</span>
+        <h2 class="text-xl md:text-2xl font-black">航班資訊 & 費用</h2>
+      </div>
+
+      <div class="bordered-box p-5 bg-white shadow-cute space-y-4">
+        <div class="flex flex-wrap justify-between items-center border-b-2 border-dashed border-[#3E3A39] pb-3 gap-2">
+          <div>
+            <span class="badge-label bg-[#A8D3E6]">STAR COMET 複數航班</span>
+            <span class="text-xs font-bold ml-2">預約總計：NT$ 7,285 / 人</span>
+          </div>
+          <span class="text-xs font-bold bg-[#B9DAA5] border-2 border-[#3E3A39] px-2 py-0.5 rounded-full">含稅及行李 30kg</span>
+        </div>
+
+        <!-- 去程 -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center p-3 bg-[#FFFCF6] border-2 border-[#3E3A39] rounded-xl gap-2">
+          <div class="flex items-center gap-3">
+            <span class="bg-[#F2A497] border-2 border-[#3E3A39] px-2 py-1 rounded-lg text-xs font-black text-white">去程</span>
+            <div>
+              <div class="font-black text-base">台北(桃園) TPE ➔ 北九州 KKJ</div>
+              <div class="text-xs font-bold text-gray-600">2026 / 11 / 26 (四)</div>
+            </div>
+          </div>
+          <div class="text-right sm:text-right font-black text-lg text-[#3E3A39]">
+            03:00 ➔ 06:15
+          </div>
+        </div>
+
+        <!-- 回程 -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center p-3 bg-[#FFFCF6] border-2 border-[#3E3A39] rounded-xl gap-2">
+          <div class="flex items-center gap-3">
+            <span class="bg-[#B9DAA5] border-2 border-[#3E3A39] px-2 py-1 rounded-lg text-xs font-black text-white">回程</span>
+            <div>
+              <div class="font-black text-base">北九州 KKJ ➔ 台北(桃園) TPE</div>
+              <div class="text-xs font-bold text-gray-600">2026 / 11 / 29 (日)</div>
+            </div>
+          </div>
+          <div class="text-right sm:text-right font-black text-lg text-[#3E3A39]">
+            23:50 ➔ 01:30 (+1)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 每日行程區域 -->
+    <section id="itinerary" class="space-y-4">
+      <div class="flex flex-wrap justify-between items-center gap-2">
+        <div class="flex items-center gap-2">
+          <span class="text-2xl">🗓️</span>
+          <h2 class="text-xl md:text-2xl font-black">每日行程細節</h2>
+        </div>
+        <button onclick="openAddModal()" class="text-xs bg-[#B9DAA5] border-2 border-[#3E3A39] px-3 py-1.5 rounded-full font-black shadow-cute-sm hover:brightness-95 flex items-center gap-1">
+          ➕ 新增行程項目
+        </button>
+      </div>
+
+      <!-- 日期切換 Tab -->
+      <div class="grid grid-cols-4 gap-2 text-center">
+        <button id="tab-day1" onclick="switchDay(1)" class="day-tab border-3 border-[#3E3A39] rounded-2xl py-2 px-1 font-black text-xs sm:text-sm bg-[#F2A497] shadow-cute">
+          11/26 (四)<br/><span class="font-normal text-xs">Day 1</span>
+        </button>
+        <button id="tab-day2" onclick="switchDay(2)" class="day-tab border-3 border-[#3E3A39] rounded-2xl py-2 px-1 font-black text-xs sm:text-sm bg-white shadow-cute-sm">
+          11/27 (五)<br/><span class="font-normal text-xs">Day 2</span>
+        </button>
+        <button id="tab-day3" onclick="switchDay(3)" class="day-tab border-3 border-[#3E3A39] rounded-2xl py-2 px-1 font-black text-xs sm:text-sm bg-white shadow-cute-sm">
+          11/28 (六)<br/><span class="font-normal text-xs">Day 3</span>
+        </button>
+        <button id="tab-day4" onclick="switchDay(4)" class="day-tab border-3 border-[#3E3A39] rounded-2xl py-2 px-1 font-black text-xs sm:text-sm bg-white shadow-cute-sm">
+          11/29 (日)<br/><span class="font-normal text-xs">Day 4</span>
+        </button>
+      </div>
+
+      <!-- 行程內容 Container -->
+      <div id="day-content" class="bordered-box p-5 bg-white shadow-cute pop-in">
+        <!-- JS 動態渲染 -->
+      </div>
+    </section>
+
+    <!-- 時刻表專區 -->
+    <section id="timetable" class="space-y-4">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">⏰</span>
+        <h2 class="text-xl md:text-2xl font-black">交通時刻表總覽</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- 潮風號觀光列車時刻表 -->
+        <div class="bordered-box p-5 bg-white shadow-cute space-y-3">
+          <div class="flex items-center justify-between border-b-2 border-dashed border-[#3E3A39] pb-2">
+            <span class="badge-label bg-[#F6D27A]">🚂 門司港懷舊觀光列車「潮風號」</span>
+            <span class="text-xs font-bold bg-[#A8D3E6] border border-[#3E3A39] px-2 py-0.5 rounded-full">四葉草套票適用</span>
+          </div>
+          <p class="text-xs font-bold text-gray-600">往返於「九州鐵道紀念館站」與「關門海峽和布刈站」，單程約 10 分鐘。</p>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs font-bold text-left border-2 border-[#3E3A39] rounded-xl overflow-hidden">
+              <thead class="bg-[#F2A497] text-white border-b-2 border-[#3E3A39]">
+                <tr>
+                  <th class="p-2 border-r border-[#3E3A39]">九州鐵道紀念館發</th>
+                  <th class="p-2">關門海峽和布刈發</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#3E3A39]/30 bg-[#FFFCF6]">
+                <tr><td class="p-1.5 border-r border-[#3E3A39]/30">10:00</td><td class="p-1.5">10:20</td></tr>
+                <tr><td class="p-1.5 border-r border-[#3E3A39]/30">10:40</td><td class="p-1.5">11:00</td></tr>
+                <tr><td class="p-1.5 border-r border-[#3E3A39]/30">11:20</td><td class="p-1.5">11:40</td></tr>
+                <tr><td class="p-1.5 border-r border-[#3E3A39]/30">12:00</td><td class="p-1.5">12:20</td></tr>
+                <tr><td class="p-1.5 border-r border-[#3E3A39]/30">12:40</td><td class="p-1.5">13:00</td></tr>
+                <tr><td class="p-1.5 border-r border-[#3E3A39]/30">13:20</td><td class="p-1.5">13:40</td></tr>
+                <tr><td class="p-1.5 border-r border-[#3E3A39]/30">14:00</td><td class="p-1.5">14:20</td></tr>
+                <tr><td class="p-1.5 border-r border-[#3E3A39]/30">14:40</td><td class="p-1.5">15:00</td></tr>
+                <tr><td class="p-1.5 border-r border-[#3E3A39]/30">15:20</td><td class="p-1.5">15:40</td></tr>
+                <tr><td class="p-1.5 border-r border-[#3E3A39]/30">16:00</td><td class="p-1.5">16:20</td></tr>
+                <tr><td class="p-1.5 border-r border-[#3E3A39]/30">16:40</td><td class="p-1.5">17:00</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 關門汽船 & 機場巴士時刻表 -->
+        <div class="space-y-4">
+          <!-- 關門汽船 -->
+          <div class="bordered-box p-5 bg-white shadow-cute space-y-2">
+            <div class="flex items-center justify-between border-b-2 border-dashed border-[#3E3A39] pb-2">
+              <span class="badge-label bg-[#A8D3E6]">🚢 關門汽船 (門司港 ⇌ 唐戶)</span>
+              <span class="text-xs font-bold text-gray-500">航程約 5 分鐘</span>
+            </div>
+            <p class="text-xs font-bold text-gray-600">憑四葉草套票可免費搭乘一次。</p>
+            <div class="p-3 bg-[#FFFCF6] border-2 border-[#3E3A39] rounded-xl text-xs font-bold space-y-1">
+              <div class="text-[#F2A497] font-black">⏱️ 發車班次：</div>
+              <div>日間（06:00 - 21:00）：<strong>每 20 分鐘一班</strong></div>
+              <div class="text-gray-500">（固定於每小時的 00分、20分、40分 由門司港棧橋及唐戶棧橋發船）</div>
+            </div>
+          </div>
+
+          <!-- 小倉站-北九州機場高速巴士 -->
+          <div class="bordered-box p-5 bg-white shadow-cute space-y-2">
+            <div class="flex items-center justify-between border-b-2 border-dashed border-[#3E3A39] pb-2">
+              <span class="badge-label bg-[#B9DAA5]">🚌 小倉站 ➔ 北九州機場高速巴士</span>
+              <span class="text-xs font-bold text-[#F2A497]">11/29 回程建議班次</span>
+            </div>
+            <p class="text-xs font-bold text-gray-600">乘車處：小倉站巴士中心（8號乘車處）</p>
+            <div class="p-3 bg-[#FFFCF6] border-2 border-[#3E3A39] rounded-xl text-xs font-bold space-y-1">
+              <div>• 19:00 ➔ 19:58 (約58分)</div>
+              <div>• 19:30 ➔ 20:10 (約40分)</div>
+              <div>• 19:45 ➔ 20:25 (約40分)</div>
+              <div class="text-red-500 font-black">• 21:00 ➔ 21:40 (最晚班次，航班23:50起飛)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 住宿與寄放行李資訊 -->
+    <section id="stay" class="space-y-4">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">🏠</span>
+        <h2 class="text-xl md:text-2xl font-black">住宿地點與行李寄放</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Airbnb 卡片 -->
+        <div class="bordered-box p-5 bg-white shadow-cute space-y-3">
+          <div class="flex justify-between items-center border-b-2 border-dashed border-[#3E3A39] pb-2">
+            <span class="badge-label bg-[#F6D27A]">🏡 Airbnb 民宿指引</span>
+            <span class="text-xs font-bold text-gray-500">前三晚入住</span>
+          </div>
+          <p class="text-sm font-bold leading-relaxed">
+            以學校前面的 <strong>DyDo 自動販賣機</strong> 為地標，從那裡穿過停車場，往裡面走去第 1 間即是！
+          </p>
+          <div class="border-2 border-[#3E3A39] rounded-xl overflow-hidden bg-[#FFFCF6] p-2 text-center">
+            <span class="text-xs font-bold text-gray-500 block mb-1">Airbnb 實景地標圖</span>
+            <div id="airbnb-img-container" class="w-full flex justify-center">
+              <!-- 可貼上圖片 -->
+              <img src="https://placehold.co/400x250/FFFCF6/3E3A39?text=Airbnb+DyDo%E8%B2%A9%E8%B3%A3%E6%A9%9F%E5%9C%B0%E標" alt="Airbnb指示" class="rounded-lg border-2 border-[#3E3A39] max-h-48 object-cover"/>
+            </div>
+            <button onclick="changeCustomImg('airbnb')" class="mt-2 text-xs bg-[#A8D3E6] border border-[#3E3A39] px-2 py-1 rounded-md font-bold">🖼️ 修改圖片連結</button>
+          </div>
+        </div>
+
+        <!-- 7-Eleven 行李寄存卡片 -->
+        <div class="bordered-box p-5 bg-white shadow-cute space-y-3">
+          <div class="flex justify-between items-center border-b-2 border-dashed border-[#3E3A39] pb-2">
+            <span class="badge-label bg-[#A8D3E6]">🧳 7-Eleven 京町2丁目店</span>
+            <span class="text-xs font-bold text-green-600 font-black">已預約並付款</span>
+          </div>
+          <ul class="text-xs font-bold space-y-1 text-gray-700">
+            <li>📍 <strong>地址：</strong>福岡縣北九州市小倉北區京町 2-4-27</li>
+            <li>🕒 <strong>寄存時間：</strong>11/29 11:00 ➔ 11/29 19:30</li>
+            <li>👤 <strong>預約姓名：</strong>LI PEILING</li>
+            <li>💼 <strong>數量與費用：</strong>行李 2 件 / ¥1,600</li>
+          </ul>
+          <div class="border-2 border-[#3E3A39] rounded-xl overflow-hidden bg-[#FFFCF6] p-2 text-center">
+            <span class="text-xs font-bold text-gray-500 block mb-1">預約憑證畫面</span>
+            <div id="711-img-container" class="w-full flex justify-center">
+              <img src="https://placehold.co/400x200/FFFCF6/3E3A39?text=7-Eleven+%E8%A1%8C%E6%9D%8E%E5%AF%84%E6%94%BE%E6%86%A1%E8%AD%89" alt="711憑證" class="rounded-lg border-2 border-[#3E3A39] max-h-40 object-cover"/>
+            </div>
+            <button onclick="changeCustomImg('711')" class="mt-2 text-xs bg-[#A8D3E6] border border-[#3E3A39] px-2 py-1 rounded-md font-bold">🖼️ 修改圖片連結</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 待辦事項與退稅教學 -->
+    <section id="todo" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- 可打勾待辦事項 -->
+      <div class="bordered-box p-5 bg-white shadow-cute space-y-3">
+        <div class="flex justify-between items-center border-b-2 border-dashed border-[#3E3A39] pb-2">
+          <span class="badge-label bg-[#F2A497] text-white">✅ 出發前待辦事項</span>
+        </div>
+        <div class="space-y-2 text-sm font-bold">
+          <label class="flex items-center gap-3 cursor-pointer p-2 bg-[#FFFCF6] border-2 border-[#3E3A39] rounded-xl">
+            <input type="checkbox" class="custom-checkbox" checked />
+            <span>填好 Visit Japan Web (VJW)</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer p-2 bg-[#FFFCF6] border-2 border-[#3E3A39] rounded-xl">
+            <input type="checkbox" class="custom-checkbox" checked />
+            <span>投保旅平險 + 不便險</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer p-2 bg-[#FFFCF6] border-2 border-[#3E3A39] rounded-xl">
+            <input type="checkbox" class="custom-checkbox" />
+            <span>確認日本 eSIM / 網卡已開通</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer p-2 bg-[#FFFCF6] border-2 border-[#3E3A39] rounded-xl">
+            <input type="checkbox" class="custom-checkbox" />
+            <span>準備日幣現金與信用卡</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 退稅教學流程 -->
+      <div class="bordered-box p-5 bg-white shadow-cute space-y-3">
+        <div class="flex justify-between items-center border-b-2 border-dashed border-[#3E3A39] pb-2">
+          <span class="badge-label bg-[#B9DAA5]">🛍️ 日本免稅退稅 4 步驟</span>
+        </div>
+        <div class="space-y-2 text-xs font-bold text-gray-700">
+          <div class="p-2 bg-[#FFFCF6] border-2 border-[#3E3A39] rounded-xl">
+            <span class="text-[#F2A497] font-black">Step 1：</span>購物時出示台灣護照，掃描 QR Code 完成登記。
+          </div>
+          <div class="p-2 bg-[#FFFCF6] border-2 border-[#3E3A39] rounded-xl">
+            <span class="text-[#F2A497] font-black">Step 2：</span>至北九州機場 1 樓，前往「退稅確認機」。
+          </div>
+          <div class="p-2 bg-[#FFFCF6] border-2 border-[#3E3A39] rounded-xl">
+            <span class="text-[#F2A497] font-black">Step 3：</span>海關確認完成後，**再將免稅品託運行李**！
+          </div>
+          <div class="p-2 bg-[#FFFCF6] border-2 border-[#3E3A39] rounded-xl">
+            <span class="text-[#F2A497] font-black">Step 4：</span>等待退款入帳。⚠️ 注意：免稅物品須隨身出示，切勿提前託運！
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- 行程編輯 / 新增彈出視窗 (Modal) -->
+  <div id="modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
+    <div class="bordered-box bg-white p-5 max-w-md w-full space-y-4 shadow-cute-lg">
+      <h3 id="modal-title" class="font-black text-lg text-[#3E3A39] border-b-2 border-[#3E3A39] pb-2">編輯行程內容</h3>
+      
+      <div class="space-y-3 text-xs font-bold">
+        <div>
+          <label class="block mb-1">時間／類別標籤：</label>
+          <input id="edit-time" type="text" class="w-full p-2 border-2 border-[#3E3A39] rounded-lg" placeholder="例：10:00 - 12:00" />
+        </div>
+        <div>
+          <label class="block mb-1">地點名稱：</label>
+          <input id="edit-title" type="text" class="w-full p-2 border-2 border-[#3E3A39] rounded-lg" placeholder="地點名稱" />
+        </div>
+        <div>
+          <label class="block mb-1">交通方式小標籤：</label>
+          <input id="edit-[#3E3A39]tag" type="text" class="w-full p-2 border-2 border-[#3E3A39] rounded-lg" placeholder="例：接駁巴士 / JR鐵道 / 關門汽船" />
+        </div>
+        <div>
+          <label class="block mb-1">詳細備註說明：</label>
+          <textarea id="edit-desc" class="w-full p-2 border-2 border-[#3E3A39] rounded-lg h-20" placeholder="行程詳細內容..."></textarea>
+        </div>
+        <div>
+          <label class="block mb-1">Google 地圖連結：</label>
+          <input id="edit-map" type="text" class="w-full p-2 border-2 border-[#3E3A39] rounded-lg" placeholder="https://maps.google.com/..." />
+        </div>
+        <div>
+          <label class="block mb-1">圖片網址（可自由貼上）：</label>
+          <input id="edit-img" type="text" class="w-full p-2 border-2 border-[#3E3A39] rounded-lg" placeholder="https://..." />
+        </div>
+        <div class="flex items-center gap-2">
+          <input id="edit-highlight" type="checkbox" class="custom-checkbox" />
+          <label for="edit-highlight">標記為「必去」重點行程 ✨</label>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center pt-2">
+        <button id="delete-btn" onclick="deleteCurrentItem()" class="px-3 py-1.5 bg-red-400 text-white font-bold border-2 border-[#3E3A39] rounded-xl text-xs hover:brightness-95">
+          🗑️ 刪除此項目
+        </button>
+        <div class="flex gap-2">
+          <button onclick="closeModal()" class="px-3 py-1.5 bg-gray-200 border-2 border-[#3E3A39] rounded-xl text-xs font-bold">取消</button>
+          <button onclick="saveItem()" class="px-4 py-1.5 bg-[#B9DAA5] border-2 border-[#3E3A39] rounded-xl text-xs font-bold">儲存更新</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript 腳本區塊 -->
+  <script>
+    // 預設行程數據
+    let itineraryData = {
+      1: [
+        { id: 101, time: "抵達＆交通", title: "機場接駁巴士 ➔ JR小倉站", tag: "接駁巴士 ¥710", desc: "北九州機場 1 樓入境大廳外 1 號乘車處搭乘。", map: "https://maps.google.com", highlight: true, img: "" },
+        { id: 102, time: "住宿 Check-in", title: "Airbnb 入住", tag: "步行", desc: "以學校前面的 DyDo 自動販賣機為地標，穿過停車場，第 1 間即達。", map: "https://maps.google.com", highlight: false, img: "" },
+        { id: 103, time: "美食", title: "大竜軒 拉麵本店", tag: "美食", desc: "道地福岡豚骨拉麵。", map: "https://maps.google.com", highlight: false, img: "" },
+        { id: 104, time: "甜點", title: "Fruit Factory Mooon", tag: "甜點", desc: "新鮮水果聖代甜點專賣店。", map: "https://maps.google.com", highlight: false, img: "" },
+        { id: 105, time: "景點", title: "皿倉山纜車 (山麓站)", tag: "纜車/免費接駁", desc: "JR 八幡站有免費接駁車可直達纜車站，享受新三大夜景！", map: "https://maps.google.com", highlight: true, img: "" },
+        { id: 106, time: "購物", title: "3COINS 小倉店", tag: "購物", desc: "營業至 20:00 關門，把握時間挑選生活雜貨。", map: "https://maps.google.com", highlight: false, img: "" },
+        { id: 107, time: "20:00 晚宴", title: "博多牛腸鍋 大山 (AMU PLAZA 小倉店)", tag: "預約成功", desc: "預約 ID: PQWYRE ｜ 2 名 ｜ 2×大山經典套組【含飲料暢飲】女子會。", map: "https://maps.google.com", highlight: true, img: "" }
+      ],
+      2: [
+        { id: 201, time: "早午餐", title: "Kona's Coffee @ Yahata", tag: "美食", desc: "夏威夷渡假風舒芙蕾鬆餅與咖啡。", map: "https://maps.google.com", highlight: false, img: "" },
+        { id: 202, time: "購物", title: "THE OUTLETS KITAKYUSHU", tag: "購物", desc: "北九州大型 Outlet 購物中心。", map: "https://maps.google.com", highlight: true, img: "" },
+        { id: 203, time: "購物", title: "Aeon Mall 八幡東", tag: "購物", desc: "賣場豐富，順便採買日用品與伴手禮。", map: "https://maps.google.com", highlight: false, img: "" },
+        { id: 204, time: "晚餐", title: "原始燒 三代目 巖流 OR もつ鍋 もつ燒專門やおき", tag: "美食", desc: "擇一品嚐日式爐端燒居酒屋或牛腸燒肉！", map: "https://maps.google.com", highlight: false, img: "" }
+      ],
+      3: [
+        { id: 301, time: "09:00 出門", title: "Bakery & Chandelier Eccentric", tag: "美食", desc: "特色烘焙麵包店。", map: "https://maps.google.com", highlight: false, img: "" },
+        { id: 302, time: "景點", title: "九州鐵道紀念館", tag: "鐵道", desc: "購買關門海峽四葉草票券 (成人¥1,000)，包含潮風號、山電巴士與關門汽船！", map: "https://maps.google.com", highlight: true, img: "" },
+        { id: 303, time: "交通體驗", title: "潮風號觀光列車", tag: "潮風號", desc: "往返九州鐵道紀念館站 ⇌ 關門海峽和布刈站，航程約 10 分鐘。", map: "https://maps.google.com", highlight: true, img: "" },
+        { id: 304, time: "交通", title: "關門汽船 (門司港 ➔ 下關唐戶)", tag: "關門汽船", desc: "搭船橫跨關門海峽，航程約 5 分鐘（每 20 分鐘一班）。", map: "https://maps.google.com", highlight: false, img: "" },
+        { id: 305, time: "11:00-15:00", title: "唐戶市場", tag: "必吃美食", desc: "新鮮海鮮、河豚生魚片與握壽司市集！", map: "https://maps.google.com", highlight: true, img: "" },
+        { id: 306, time: "下午茶", title: "Kimura Shoten Café TIARA", tag: "咖啡甜點", desc: "海景咖啡館休息。", map: "https://maps.google.com", highlight: false, img: "" },
+        { id: 307, time: "景點", title: "赤間神宮", tag: "神社", desc: "朱紅色的水野宮風格神宮。", map: "https://maps.google.com", highlight: false, img: "" },
+        { id: 308, time: "交通/景點", title: "山電巴士 ➔ 關門隧道人行道", tag: "山電巴士", desc: "穿越海底隧道人行道（御裳川 ➔ 唐戶）。", map: "https://maps.google.com", highlight: false, img: "" },
+        { id: 309, time: "景點", title: "和布刈神社 鳥居", tag: "體驗", desc: "可用獨特的小釣竿勾起裝有籤詩的可愛河豚！", map: "https://maps.google.com", highlight: true, img: "" },
+        { id: 310, time: "晚餐", title: "Princess Phi Phi 燒咖哩 OR Originator Kawara 瓦片蕎麥麵", tag: "美食", desc: "門司港必吃美食二選一。", map: "https://maps.google.com", highlight: true, img: "" },
+        { id: 311, time: "夜景", title: "門司港懷舊展望室", tag: "夜景", desc: "欣賞門司港美麗夜景，結束後收拾行李準備隔天寄放。", map: "https://maps.google.com", highlight: false, img: "" }
+      ],
+      4: [
+        { id: 401, time: "11:00 寄放", title: "7-Eleven 京町2丁目店 寄放行李", tag: "寄物", desc: "預約 11:00 - 19:30，已預約付款（¥1,600 / 2件）。", map: "https://maps.google.com", highlight: true, img: "" },
+        { id: 402, time: "美食/景點", title: "星野園 (抹茶專賣) ＆ 旦過市場", tag: "市場漫遊", desc: "品嚐濃郁抹茶甜點與體驗小倉市民廚房旦過市場。", map: "https://maps.google.com", highlight: false, img: "" },
+        { id: 403, time: "景點", title: "小倉城 ＆ 八坂神社", tag: "歷史地標", desc: "巡禮小倉名城與八坂神社參拜。", map: "https://maps.google.com", highlight: true, img: "" },
+        { id: 404, time: "購物", title: "驚安殿堂 唐吉訶德 ＆ GU / UNIQLO / 無印良品", tag: "購物採買", desc: "小倉站前商圈大採買，記得辦理免稅！", map: "https://maps.google.com", highlight: false, img: "" },
+        { id: 405, time: "美食", title: "牛カツ京都勝牛 ＆ Shiroya 奶油小蛋糕", tag: "美食", desc: "品嚐炸牛排與買 Shiroya 懷舊爆漿奶油小蛋糕。", map: "https://maps.google.com", highlight: true, img: "" },
+        { id: 406, time: "20:50 抵達", title: "JR小倉站南口 ➔ 北九州機場", tag: "高速巴士", desc: "小倉站巴士中心 8 號乘車處搭乘高速巴士（建議搭乘 19:00 或 19:30 班次）。", map: "https://maps.google.com", highlight: true, img: "" }
+      ]
+    };
+
+    let currentDay = 1;
+    let editingItemId = null;
+
+    // 頁面載入後初始化
+    window.onload = function() {
+      startCountdown();
+      switchDay(1);
+    };
+
+    // 滾動至章節
+    function scrollToSec(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // 動態效果切換
+    let motionEnabled = true;
+    function toggleMotion() {
+      motionEnabled = !motionEnabled;
+      document.body.classList.toggle('reduced-motion', !motionEnabled);
+      document.getElementById('motionToggle').innerText = motionEnabled ? '✨ 動態: 開' : '⏸️ 動態: 關';
+    }
+
+    // 倒數計時器 (目標 2026/11/26 03:00)
+    function startCountdown() {
+      const targetDate = new Date('2026-11-26T03:00:00+08:00').getTime();
+      
+      function update() {
+        const now = new Date().getTime();
+        const diff = targetDate - now;
+
+        if (diff <= 0) {
+          document.getElementById('countdown').innerText = "旅程已經開始囉！🎉";
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('countdown').innerText = `${days} 天 ${hours} 小時 ${minutes} 分 ${seconds} 秒`;
+      }
+      update();
+      setInterval(update, 1000);
+    }
+
+    // 切換日期 Tab
+    function switchDay(day) {
+      currentDay = day;
+      for (let i = 1; i <= 4; i++) {
+        const tab = document.getElementById(`tab-day${i}`);
+        if (i === day) {
+          tab.className = "day-tab border-3 border-[#3E3A39] rounded-2xl py-2 px-1 font-black text-xs sm:text-sm bg-[#F2A497] text-white shadow-cute scale-105 transition-transform";
+        } else {
+          tab.className = "day-tab border-3 border-[#3E3A39] rounded-2xl py-2 px-1 font-black text-xs sm:text-sm bg-white shadow-cute-sm hover:bg-[#FFFCF6]";
+        }
+      }
+      renderItinerary();
+    }
+
+    // 渲染行程列表
+    function renderItinerary() {
+      const container = document.getElementById('day-content');
+      const items = itineraryData[currentDay] || [];
+
+      if (items.length === 0) {
+        container.innerHTML = `<div class="text-center py-8 font-bold text-gray-400">當天尚無行程項目，點擊右上角新增吧！</div>`;
+        return;
+      }
+
+      let html = `<div class="space-y-4 relative border-l-4 border-[#3E3A39] ml-3 pl-4 md:pl-6 my-2">`;
+
+      items.forEach((item) => {
+        html += `
+          <div class="relative group pop-in">
+            <!-- 時間軸接點 -->
+            <div class="absolute -left-[27px] md:-left-[35px] top-1.5 w-5 h-5 rounded-full border-2 border-[#3E3A39] bg-[#F6D27A]"></div>
+
+            <div class="p-3 md:p-4 bg-[#FFFCF6] border-2 border-[#3E3A39] rounded-xl shadow-cute-sm space-y-2">
+              <div class="flex flex-wrap justify-between items-center gap-1 border-b border-dashed border-[#3E3A39]/30 pb-1.5">
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-black bg-[#A8D3E6] border border-[#3E3A39] px-2 py-0.5 rounded-md">${item.time}</span>
+                  ${item.tag ? `<span class="badge-label bg-[#B9DAA5] text-xs">${item.tag}</span>` : ''}
+                  ${item.highlight ? `<span class="badge-label bg-[#F2A497] text-white text-xs">✨ 必去</span>` : ''}
+                </div>
+                <div class="flex items-center gap-1">
+                  <a href="${item.map}" target="_blank" class="text-xs bg-white border border-[#3E3A39] px-2 py-0.5 rounded-md font-bold hover:bg-[#F6D27A]">📍 地圖</a>
+                  <button onclick="openEditModal(${item.id})" class="text-xs bg-white border border-[#3E3A39] px-2 py-0.5 rounded-md font-bold hover:bg-gray-100">✏️ 編輯</button>
+                </div>
+              </div>
+
+              <div class="font-black text-base md:text-lg text-[#3E3A39]">${item.title}</div>
+              <p class="text-xs md:text-sm font-bold text-gray-600 leading-relaxed">${item.desc}</p>
+
+              ${item.img ? `
+                <div class="mt-2 rounded-lg border-2 border-[#3E3A39] overflow-hidden max-h-40">
+                  <img src="${item.img}" alt="${item.title}" class="w-full object-cover"/>
+                </div>
+              ` : ''}
+            </div>
+          </div>
+        `;
+      });
+
+      html += `</div>`;
+      container.innerHTML = html;
+    }
+
+    // 打開新增 modal
+    function openAddModal() {
+      editingItemId = null;
+      document.getElementById('modal-title').innerText = `新增行程 (11/${25+currentDay})`;
+      document.getElementById('edit-time').value = '';
+      document.getElementById('edit-title').value = '';
+      document.getElementById('edit-[#3E3A39]tag').value = '';
+      document.getElementById('edit-desc').value = '';
+      document.getElementById('edit-map').value = 'https://maps.google.com';
+      document.getElementById('edit-img').value = '';
+      document.getElementById('edit-highlight').checked = false;
+      document.getElementById('delete-btn').classList.add('hidden');
+      document.getElementById('modal').classList.remove('hidden');
+    }
+
+    // 打開編輯 modal
+    function openEditModal(id) {
+      editingItemId = id;
+      const item = itineraryData[currentDay].find(i => i.id === id);
+      if (!item) return;
+
+      document.getElementById('modal-title').innerText = `編輯行程項目`;
+      document.getElementById('edit-time').value = item.time || '';
+      document.getElementById('edit-title').value = item.title || '';
+      document.getElementById('edit-[#3E3A39]tag').value = item.tag || '';
+      document.getElementById('edit-desc').value = item.desc || '';
+      document.getElementById('edit-map').value = item.map || '';
+      document.getElementById('edit-img').value = item.img || '';
+      document.getElementById('edit-highlight').checked = !!item.highlight;
+      document.getElementById('delete-btn').classList.remove('hidden');
+      document.getElementById('modal').classList.remove('hidden');
+    }
+
+    // 關閉 Modal
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+    }
+
+    // 儲存更新或新增
+    function saveItem() {
+      const time = document.getElementById('edit-time').value.trim() || '彈性';
+      const title = document.getElementById('edit-title').value.trim() || '新行程項目';
+      const tag = document.getElementById('edit-[#3E3A39]tag').value.trim();
+      const desc = document.getElementById('edit-desc').value.trim();
+      const map = document.getElementById('edit-map').value.trim() || 'https://maps.google.com';
+      const img = document.getElementById('edit-img').value.trim();
+      const highlight = document.getElementById('edit-highlight').checked;
+
+      if (editingItemId) {
+        // 更新已有項目
+        const item = itineraryData[currentDay].find(i => i.id === editingItemId);
+        if (item) {
+          item.time = time;
+          item.title = title;
+          item.tag = tag;
+          item.desc = desc;
+          item.map = map;
+          item.img = img;
+          item.highlight = highlight;
+        }
+      } else {
+        // 新增項目
+        const newItem = {
+          id: Date.now(),
+          time,
+          title,
+          tag,
+          desc,
+          map,
+          img,
+          highlight
+        };
+        itineraryData[currentDay].push(newItem);
+      }
+
+      closeModal();
+      renderItinerary();
+    }
+
+    // 刪除項目
+    function deleteCurrentItem() {
+      if (!editingItemId) return;
+      if (confirm('確定要刪除這個行程項目嗎？')) {
+        itineraryData[currentDay] = itineraryData[currentDay].filter(i => i.id !== editingItemId);
+        closeModal();
+        renderItinerary();
+      }
+    }
+
+    // 修改自訂圖片 (Airbnb 或 711)
+    function changeCustomImg(type) {
+      const newUrl = prompt('請輸入圖片網址 (URL):');
+      if (newUrl && newUrl.trim() !== '') {
+        const container = document.getElementById(`${type}-img-container`);
+        container.innerHTML = `<img src="${newUrl.trim()}" class="rounded-lg border-2 border-[#3E3A39] max-h-48 object-cover"/>`;
+      }
+    }
+  </script>
+</body>
+</html>
